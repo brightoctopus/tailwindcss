@@ -1,0 +1,22 @@
+<h1>Artists</h1>
+
+<table style="width: 100%; text-align: left;">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @artists.each do |artist| %>
+      <tr>
+        <td><%= artist.id  %></td>
+        <td><%= artist.name %></td>
+        <td>
+          <%= link_to 'Show', artist_path(artist) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
