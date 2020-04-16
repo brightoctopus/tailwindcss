@@ -1,0 +1,23 @@
+<%= form_with(model: artist, local: true) do |form| %>
+  <% if artist.errors.any? %>
+    <div>
+      <h2><%= pluralize(artist.errors.count, 'error') %> did not allow the artist to be saved</h2>
+    </div>
+
+    <ul>
+      <% artist.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+    <%= link_to 'Cancel', :back %>
+  </div>
+<% end %>
