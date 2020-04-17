@@ -1,1 +1,24 @@
 <h1><%= @artist.name %></h1>
+
+<%= @artist.formatted_tags %>
+
+<%= form_with(url: artist_tags_path(@artist), local: true) do |form| %>
+  <%= form.text_field :tags, placeholder: 'Add tags separated by commas' %>
+  <%= form.submit %>
+<% end %>
+
+<br>
+
+<%= link_to 'Add an Album', new_artist_album_path(@artist) %>
+
+
+<h3>Albums</h3>
+
+<ul>
+  <% @artist.albums.each do |album| %>
+    <li>
+      <%= album.title %> |
+      <%= link_to 'Remove album', album_path(album), method: :delete %>
+    </li>
+  <% end %>
+</ul>
