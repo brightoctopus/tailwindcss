@@ -1,0 +1,11 @@
+.artist {
+  &-avatar {
+    filter: brightness(100%);
+
+    @apply w-32 h-32 rounded-full border-2 border-primary overflow-hidden;
+  }
+
+  &:hover &-avatar {
+    filter: brightness(70%);
+  }
+}
