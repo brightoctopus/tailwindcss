@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   end
 
   resources :albums, only: :destroy
+
+  root "artists#index"
 end

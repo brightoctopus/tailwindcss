@@ -10,21 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_16_203241) do
+ActiveRecord::Schema.define(version: 2020_04_17_152150) do
 
   create_table "albums", force: :cascade do |t|
     t.string "title"
     t.integer "artist_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image_url"
     t.index ["artist_id"], name: "index_albums_on_artist_id"
+  end
+
+  create_table "artist_tags", force: :cascade do |t|
+    t.integer "artist_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["artist_id"], name: "index_artist_tags_on_artist_id"
+    t.index ["tag_id"], name: "index_artist_tags_on_tag_id"
   end
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image_url"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "albums", "artists"
+  add_foreign_key "artist_tags", "artists"
+  add_foreign_key "artist_tags", "tags"
 end

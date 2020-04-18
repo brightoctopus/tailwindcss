@@ -5,6 +5,12 @@ class ArtistsController < ApplicationController
 
   def index
     @artists = Artist.all
+
+    @artist = if params[:artist_id].present?
+                Artist.find(params[:artist_id])
+              else
+                @artists.first
+              end
   end
 
   def show; end
